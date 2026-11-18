@@ -22,7 +22,7 @@ if st.button("开始批量审核",type="primary",disabled=not files,use_containe
         output=io.BytesIO();summary=[]
         with zipfile.ZipFile(output,"w",zipfile.ZIP_DEFLATED) as archive:
             for i,f in enumerate(files):
-                fname=os.path.basename(f.name).replace("/","_").replace("\","_")
+                fname=os.path.basename(f.name).replace("/","_")
                 stem=re.sub(r"[^\w\u4e00-\u9fff. -]+","_",os.path.splitext(fname)[0]) or "文章"
                 prefix=f"{i+1:02d}_{stem}"
                 try:
